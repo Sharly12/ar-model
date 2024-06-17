@@ -1,0 +1,27 @@
+<html>
+<html>
+  <head>
+    <title>AR Model Redirect</title>
+    <script>
+      function redirectToAppropriateLink() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // iOS detection
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          window.location.href = "https://dl.dropbox.com/scl/fi/2igb7ddfsp4z36olhfqmb/wetland_v2.usdz?rlkey=8bqv58a4kuxxc03fn16lm78y3&st=nq3llqoq&dl=1";
+        } 
+        // Android detection
+        else if (/android/i.test(userAgent)) {
+          window.location.href = "https://arvr.google.com/scene-viewer/1.0?file=https://raw.githubusercontent.com/Sharly12/ar-model/main/wetland.glb&mode=ar_preferred";
+        } 
+        // Fallback
+        else {
+          document.getElementById('message').innerText = "Please visit this page using an iOS or Android device.";
+        }
+      }
+    </script>
+  </head>
+  <body onload="redirectToAppropriateLink()">
+    <p id="message">Redirecting...</p>
+  </body>
+</html>
